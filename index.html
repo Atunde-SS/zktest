@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Glass Bridge</title>
+    <style>
+      body { margin: 0; overflow: hidden; }
+    </style>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <script type="module" src="./index.js"></script>
+    <div id="victory-text" style="
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 48px;
+      font-weight: bold;
+      color: gold;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      font-family: 'Arial', sans-serif;
+    ">🎉 Noir gud! 🎉</div>
+    <div style="
+      position: absolute;
+      top: 50px;
+      left: 30px;
+      color: white
+    ">
+      <strong>🔓 Public Hash:</strong>
+      <span id="public-hash-value" style="font-family: monospace;"></span>
+      <button id="copy-public-hash">Copy</button>
+    </div>
+    <div id="copy-buttons" style="display: none; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); gap: 8px;">
+      <button id="copy-proof">📋 Copy Proof</button>
+      <!-- <button id="copy-sol">📄 Copy Verifier</button> -->
+    </div>
+  </body>
+</html>
