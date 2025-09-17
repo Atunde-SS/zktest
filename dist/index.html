@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>ZK Blind Guess</title>
+    <style>
+      body { margin: 0; overflow: hidden; background: #0a0a0a; font-family: Arial, sans-serif; }
+    </style>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"
+      }
+    }
+    </script>
+    <script type="module" crossorigin src="/games/glass-bridge/bridge-index.js"></script>
+  </head>
+  <body>
+    <div id="victory-text" style="
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 48px;
+      font-weight: bold;
+      color: gold;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    ">ZK Blind Guess Success!</div>
+    <div style="
+      position: absolute;
+      top: 50px;
+      left: 30px;
+      color: white;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 5px;
+    ">
+      <strong>Public Hash:</strong>
+      <span id="public-hash-value" style="font-family: monospace; display: block;"></span>
+      <button id="copy-public-hash" style="margin-top: 5px;">Copy</button>
+      <strong>Proof Hash:</strong>
+      <span id="proof-hash-value" style="font-family: monospace; display: block;"></span>
+      <button id="copy-proof-hash" style="margin-top: 5px;">Copy</button>
+    </div>
+    <div id="copy-buttons" style="display: none; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); gap: 8px;">
+      <button id="copy-proof">📋 Copy Proof</button>
+      <button id="copy-proof-hash-bottom">📋 Copy Proof Hash</button>
+    </div>
+    <div id="verification-panel" style="
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      background: rgba(10,10,10,0.9);
+      color: white;
+      padding: 15px;
+      width: 280px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      font-size: 12px;
+    ">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+        <h3 style="margin: 0; font-size: 14px;">Verify Proof Hash</h3>
+        <button id="toggle-verify" style="background: none; border: none; color: white; font-size: 18px; cursor: pointer;">−</button>
+      </div>
+      <textarea id="proof-input" placeholder="Paste proof hash here (0x...)" style="width: 100%; height: 60px; margin-bottom: 10px; font-family: monospace; font-size: 10px; padding: 5px; border: 1px solid #555; background: #1a1a1a; color: white; border-radius: 3px; box-sizing: border-box;"></textarea>
+      <button id="verify-btn" style="width: 100%; padding: 8px; background: #333; color: white; border: none; border-radius: 3px; cursor: pointer; margin-bottom: 10px;">Verify</button>
+      <div id="verify-result" style="font-size: 11px; text-align: center;"></div>
+    </div>
+    <script>
+      document.getElementById("toggle-verify").addEventListener("click", () => {
+        const panel = document.getElementById("verification-panel");
+        panel.style.display = panel.style.display === "none" ? "block" : "none";
+        event.target.textContent = panel.style.display === "none" ? "+" : "−";
+      });
+    </script>
+  </body>
+</html>
