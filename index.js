@@ -37,7 +37,7 @@ type = "bin"
   fm.writeFile("./Nargo.toml", stringToReadableStream(nargoToml));
   return await compile(fm);
 }
-// ------------------- Utility Functions -------------------
+// ------------------- Utility Functions ----------
 function hexToBuffer(hex) {
   if (hex.startsWith('0x')) hex = hex.slice(2);
   const bytes = new Uint8Array(hex.length / 2);
